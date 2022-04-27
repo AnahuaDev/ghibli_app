@@ -17,13 +17,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() async {
-    // TODO: implement initState
-
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
@@ -102,115 +95,122 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: <Widget>[
-              Row(
-                children: [
-                  Flexible(
-                    child: Container(
-                      width: 200.0,
-                      height: 200.0,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(movie.image))),
+              Container(
+                margin: EdgeInsets.only(top: 50.0),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Container(
+                        width: 200.0,
+                        height: 200.0,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(movie.image))),
+                      ),
                     ),
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Text(
-                              movie.title + " (" + movie.releaseDate + ")",
-                              style: GoogleFonts.lato(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color:
-                                      const Color.fromRGBO(178, 215, 232, 1))),
-                        ),
-                        Container(
-                          child: Text(movie.original_title_romanised,
-                              style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  fontStyle: FontStyle.italic,
-                                  color:
-                                      const Color.fromRGBO(178, 215, 232, 1))),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Icon(Icons.movie_creation_outlined,
-                                size: 16.0,
-                                color: const Color.fromRGBO(178, 215, 232, 1)),
-                            Flexible(
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 10.0),
-                                child: Text(movie.director,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 15,
-                                        color: const Color.fromRGBO(
-                                            178, 215, 232, 1))),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Icon(Icons.movie_filter_outlined,
-                                size: 16.0,
-                                color: const Color.fromRGBO(178, 215, 232, 1)),
-                            Flexible(
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 10.0),
-                                child: Text(movie.producer,
-                                    maxLines: 2,
-                                    style: GoogleFonts.lato(
-                                        fontSize: 15,
-                                        color: const Color.fromRGBO(
-                                            178, 215, 232, 1))),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 10.0),
-                          child: RatingBar(
-                            itemSize: 25.0,
-                            initialRating: double.parse(movie.rating) * 5 / 100,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            ignoreGestures: true,
-                            ratingWidget: RatingWidget(
-                                full: Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                ),
-                                half: Icon(
-                                  Icons.star_half,
-                                  color: Colors.amber,
-                                ),
-                                empty: Icon(
-                                  Icons.star_border,
-                                  color: Colors.amber,
-                                )),
-                            itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                            onRatingUpdate: (rating) {
-                              print(rating);
-                            },
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Text(
+                                movie.title + " (" + movie.releaseDate + ")",
+                                style: GoogleFonts.lato(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color.fromRGBO(
+                                        178, 215, 232, 1))),
                           ),
-                        ),
-                        Container(
-                          child: TextButton(
-                            child: Text("Add to favorites"),
-                            onPressed: () {
-                              print("favorite");
-                            },
+                          Container(
+                            child: Text(movie.original_title_romanised,
+                                style: GoogleFonts.lato(
+                                    fontSize: 16,
+                                    fontStyle: FontStyle.italic,
+                                    color: const Color.fromRGBO(
+                                        178, 215, 232, 1))),
                           ),
-                        )
-                      ],
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Icon(Icons.movie_creation_outlined,
+                                  size: 16.0,
+                                  color:
+                                      const Color.fromRGBO(178, 215, 232, 1)),
+                              Flexible(
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 10.0),
+                                  child: Text(movie.director,
+                                      style: GoogleFonts.lato(
+                                          fontSize: 15,
+                                          color: const Color.fromRGBO(
+                                              178, 215, 232, 1))),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Icon(Icons.movie_filter_outlined,
+                                  size: 16.0,
+                                  color:
+                                      const Color.fromRGBO(178, 215, 232, 1)),
+                              Flexible(
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 10.0),
+                                  child: Text(movie.producer,
+                                      maxLines: 2,
+                                      style: GoogleFonts.lato(
+                                          fontSize: 15,
+                                          color: const Color.fromRGBO(
+                                              178, 215, 232, 1))),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10.0),
+                            child: RatingBar(
+                              itemSize: 25.0,
+                              initialRating:
+                                  double.parse(movie.rating) * 5 / 100,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              ignoreGestures: true,
+                              ratingWidget: RatingWidget(
+                                  full: Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  half: Icon(
+                                    Icons.star_half,
+                                    color: Colors.amber,
+                                  ),
+                                  empty: Icon(
+                                    Icons.star_border,
+                                    color: Colors.amber,
+                                  )),
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 1.0),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                            ),
+                          ),
+                          Container(
+                            child: TextButton(
+                              child: Text("Add to favorites"),
+                              onPressed: () {
+                                print("favorite");
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 20.0),
